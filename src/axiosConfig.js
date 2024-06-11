@@ -14,4 +14,12 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+instance.interceptors.response.use(
+  (response) => {
+    // refresh token
+    return response;
+  },
+  (error) => Promise.reject(error)
+);
+
 export default instance;
