@@ -2,12 +2,13 @@ import { InputForm, Button } from "../../components";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 // the me define the actions
 import * as actions from "../../store/actions";
 
 function Login() {
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, msg, update } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -24,6 +25,10 @@ function Login() {
       navigate("/");
     }
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    Swal.fire("Opps !", msg, "error");
+  }, [msg, update]);
 
   const onChangeValue = (e) => {
     const { name, value } = e.target;

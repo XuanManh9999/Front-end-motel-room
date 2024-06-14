@@ -23,7 +23,6 @@ function InputForm({
         onFocus={() => setInvalidFields([])}
         className="border-none bg-[#e8f0fe] w-full p-2 rounded-md outline-none"
       />
-      {console.log("Xuan Manh check:", invalidFields)}
       {invalidFields?.length > 0 &&
         invalidFields.some((i) => i?.name === name) && (
           <small className="text-red-500 italic">
