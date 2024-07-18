@@ -7,3 +7,4 @@ export { default as RentalApartment } from "./RentalApartment";
 export { default as RoomRent } from "./RoomRent";
 export { default as OfficePremises } from "./OfficePremises";
 export { default as HomePage } from "./HomePage";
+export { default as Search } from "./Search";
