@@ -11,7 +11,7 @@ const {
 } = icons;
 export default function Search() {
   return (
-    <div className="p-[10px] bg-[#febb02] rounded-lg flex-col lg:flex-row flex items-center justify-around gap-2 w-full">
+    <div className=" p-[10px] bg-[#febb02] rounded-lg flex-col lg:flex-row flex items-center justify-around gap-2 w-3/5 mt-2">
       <SearchItem
         text={"Phòng trọ, nhà trọ"}
         IconBefore={<GiFamilyHouse />}

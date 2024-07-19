@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { apiGetCategories } from "../../services/category";
-import { formatVietnameseToString, path} from "../../ultils/constant";
-const nav = [
-  { name: "Trang chủ", path: "home" },
-  { name: "Cho thuê căn hộ", path: "cho-thue-can-ho" },
-  { name: "Cho thuê phòng trọ", path: "cho-thue-phong-tro" },
-  { name: "Nhà cho thuê", path: "nha-cho-thue" },
-  { name: "Mặt bằng văn phòng", path: "mat-bang-van-phong" },
-];
+import { path } from "../../ultils/constant";
+import { formatVietnameseToString } from "../../ultils/Common/formatVNToString";
 
 const notActive =
   "hover:bg-secondary2 text-white  bg-secondary1 h-full block py-2 px-4";
