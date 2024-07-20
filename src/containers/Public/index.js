@@ -8,3 +8,4 @@ export { default as RoomRent } from "./RoomRent";
 export { default as OfficePremises } from "./OfficePremises";
 export { default as HomePage } from "./HomePage";
 export { default as Search } from "./Search";
+export { default as List } from "./List";
