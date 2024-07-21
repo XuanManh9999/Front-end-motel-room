@@ -22,7 +22,7 @@ function Navigation() {
 
   return (
     <div className="w-screen flex justify-center bg-secondary1">
-      <div className="w-3/5">
+      <div className="w-4/5">
         <ul className="flex items-center justify-between ">
           <li className="font-medium h-full" key={categorys.code}>
             <NavLink

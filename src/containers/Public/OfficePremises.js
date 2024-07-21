@@ -1,7 +1,7 @@
 import React from "react";
 
 const OfficePremises = () => {
-  return <div>OfficePremises</div>;
+  return <div>OfficePremises</div>
 };
 
 export default OfficePremises;
