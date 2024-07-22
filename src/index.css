@@ -9,3 +9,11 @@
 .custom-button:hover {
   @apply bg-blue-700 text-white;
 }
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Số dòng tối đa bạn muốn hiển thị */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -4,7 +4,7 @@ import {
   Home,
   OfficePremises,
   RentalApartment,
-  RentalHouse,
+  // RentalHouse,
   RoomRent,
   HomePage,
 } from "./containers/Public";

@@ -1,47 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import icons from "../ultils/icons";
 import { Link } from "react-router-dom";
-const urlImage = [
-  "https://pt123.cdn.static123.com/images/thumbs/900x600/fit/2024/05/12/img-20240512-084413_1715527892.jpg",
-  "https://pt123.cdn.static123.com/images/thumbs/900x600/fit/2024/05/12/img-20240512-084402_1715527888.jpg",
-  "https://pt123.cdn.static123.com/images/thumbs/900x600/fit/2024/05/12/img-20240512-084354_1715527888.jpg",
-  "https://pt123.cdn.static123.com/images/thumbs/900x600/fit/2024/05/12/img-20240512-084352_1715527890.jpg",
-];
 const { GoHeart, GoHeartFill, IoIosStar, BsFillBookmarkStarFill } = icons;
 
-function Item() {
+function Item({
+  key,
+  images,
+  address,
+  attributes,
+  categoryCode,
+  star,
+  title,
+  updateAt,
+  user,
+  description,
+}) {
+  const [isHoverHeart, setIsHoverHeart] = useState(false);
+  const render_image_home = images.slice(0, 4);
+  const render_star = () => {
+    let array_star = [];
+    for (let i = 0; i < star; i++) {
+      array_star.push(
+        <IoIosStar className="star-item" size={18} color="yellow" />
+      );
+    }
+    return array_star;
+  };
   return (
-    <div className="w-full flex py-[15px]  border-t-2 border-t-[red] h-[300px] overflow-auto">
-      <div className="w-3/5 flex flex-wrap gap-[1px] items-center">
-        {urlImage?.map((item, index) => (
-          <img
-            className="w-[48%] h-[50%]  object-cover "
-            src={item}
-            alt={index}
-          />
-        ))}
+    <div className="w-full flex py-[15px]  border-t-2 border-t-[red] h-[300px] overflow-auto cursor-pointer">
+      <div className="w-3/5 flex flex-wrap gap-[1px] items-center relative ">
+        {images &&
+          images.length > 0 &&
+          render_image_home?.map((item, index) => {
+            return (
+              <img
+                className="w-[48%] h-[50%]  object-cover "
+                src={item?.img}
+                alt={item?.alt}
+              />
+            );
+          })}
+        <span
+          className=" text-red   absolute bottom-1 text-white  right-5"
+          onMouseEnter={() => setIsHoverHeart(true)}
+          onMouseLeave={() => setIsHoverHeart(false)}
+        >
+          {isHoverHeart ? (
+            <GoHeartFill className="text-red-600" size={26} />
+          ) : (
+            <GoHeart size={26} />
+          )}
+        </span>
+        <span className="bg-overlay-70 text-white p-[5px] text-[14px] rounded-md absolute bottom-1  left-1 ">
+          {`${images?.length} ảnh`}
+        </span>
       </div>
       <div className="w-3/5">
         <div className="flex justify-between gap-4">
           <Link className="font-bold text-[#E13427] text-[14px]  ">
-            <IoIosStar className="star-item" size={18} color="yellow" />
-            <IoIosStar className="star-item" size={18} color="yellow" />
-            <IoIosStar className="star-item" size={18} color="yellow" />
-            <IoIosStar className="star-item" size={18} color="yellow" />
-            <IoIosStar className="star-item" size={18} color="yellow" />
-            CĂN HỘ MINI 1PN, BAO ĐẸP, GIÁ RẺ BÌNH THẠNH, SÁT HUTECH
+            {render_star()}
+            {` ${title}`}
           </Link>
-          <BsFillBookmarkStarFill className="text-yellow-400" size={35} />
+          {star >= 3 ? (
+            <BsFillBookmarkStarFill className="text-yellow-400" size={35} />
+          ) : (
+            ""
+          )}
         </div>
         <div className="flex my-2 justify-between items-center gap-2">
-          <span className="font-bold text-green-600">3.7 triệu/tháng</span>
-          <span>35m²</span>
-          <span>Quận Bình Thạnh, Hồ Chí Minh</span>
+          <span className="font-bold text-green-600">{attributes.price}</span>
+          <span className="text-[14px]">{attributes.acreage}</span>
+          <span className="text-[14px]">{attributes.address}</span>
         </div>
-        <p className="text-gray-600">
-          CĂN HỘ ZION 1PN VỊ TRÍ: Xô Viết Nghệ Tĩnh P26 Q.Bình Thạnh CÔNG VIÊN
-          view sông kế bên. Cách CHỢ chỉ 200m, phòng GYM cạnh nhà. Hầm xe RỘNG
-          RÃI,…
+        <p className="text-gray-600 text-justify overflow-hidden max-h-[140px] ellipsis">
+          {description}
         </p>
         <div className="flex justify-between">
           <div className="flex items-center gap-1 my-3">
@@ -50,14 +82,14 @@ function Item() {
               alt="avatar"
               className="w-[30px] h-[30px] object-cover rounded-full"
             />
-            <p>Toàn</p>
+            <p>{user.name}</p>
           </div>
           <div className="flex gap-2 items-center">
             <button
               type="button"
               className="bg-blue-700 text-white px-[3px] py-[7px] rounded-md h-[30px] flex items-center"
             >
-              Gọi 0352593469
+              Gọi {user.phone}
             </button>
             <button
               type="button"
@@ -69,7 +101,7 @@ function Item() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default React.memo(Item);
