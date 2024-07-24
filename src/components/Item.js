@@ -28,7 +28,7 @@ function Item({
   };
   return (
     <div className="w-full flex py-[15px]  border-t-2 border-t-[red] h-[300px] overflow-auto cursor-pointer">
-      <div className="w-3/5 flex flex-wrap gap-[1px] items-center relative ">
+      <div className="w-[45%] flex flex-wrap gap-[1px] items-center relative ">
         {images &&
           images.length > 0 &&
           render_image_home?.map((item, index) => {
@@ -55,7 +55,7 @@ function Item({
           {`${images?.length} ảnh`}
         </span>
       </div>
-      <div className="w-3/5">
+      <div className="w-[55%]">
         <div className="flex justify-between gap-4">
           <Link className="font-bold text-[#E13427] text-[14px]  ">
             {render_star()}
@@ -68,9 +68,13 @@ function Item({
           )}
         </div>
         <div className="flex my-2 justify-between items-center gap-2">
-          <span className="font-bold text-green-600">{attributes.price}</span>
-          <span className="text-[14px]">{attributes.acreage}</span>
-          <span className="text-[14px]">{attributes.address}</span>
+          <strong className="font-bold text-green-600 flex-3 whitespace-nowrap overflow-hidden text-ellipsis">
+            {attributes.price}
+          </strong>
+          <strong className="text-[14px] flex-1">{attributes.acreage}</strong>
+          <strong className="text-[14px] flex-3 whitespace-nowrap overflow-hidden text-ellipsis">
+            {address.split(",").filter((_, index) => index >= 2)}
+          </strong>
         </div>
         <p className="text-gray-600 text-justify overflow-hidden max-h-[140px] ellipsis">
           {description}
@@ -82,14 +86,20 @@ function Item({
               alt="avatar"
               className="w-[30px] h-[30px] object-cover rounded-full"
             />
-            <p>{user.name}</p>
+            <p className="whitespace-nowrap overflow-hidden text-ellipsis">
+              {user.name.split(" ").length >= 3
+                ? user.name.split(" ").filter((item, index) => index >= 1)
+                : user.name}
+            </p>
           </div>
           <div className="flex gap-2 items-center">
             <button
               type="button"
               className="bg-blue-700 text-white px-[3px] py-[7px] rounded-md h-[30px] flex items-center"
             >
-              Gọi {user.phone}
+              <Link target="_blank" to={`tel:${user.phone}`}>
+                Gọi {user.phone}
+              </Link>
             </button>
             <button
               type="button"

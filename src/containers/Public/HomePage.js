@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { text } from "../../ultils/constant";
 import { Province } from "../../components";
 import { List } from "../Public/index";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../store/actions/user";
 const HomePage = () => {
+  const users = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
   return (
     <div className="w-full flex flex-col gap-3">
       <div>
@@ -20,6 +27,6 @@ const HomePage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;

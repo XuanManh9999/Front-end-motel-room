@@ -1,15 +1,15 @@
 import React from "react";
 import { text } from "../../ultils/constant";
 import { Button, Item } from "../../components";
-import { getPosts } from "../../store/actions";
+import { getPosts, getPostsLimit } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 export default function List() {
   const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.post);
+  const { posts, count } = useSelector((state) => state.post);
   React.useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getPostsLimit(0));
   }, []);
-  console.log(posts);
+  console.log(count);
   return (
     <div className="w-full border  p-5 my-[3px] bg-white shadow-md rounded-md ">
       <div className="flex items-center justify-between ">
