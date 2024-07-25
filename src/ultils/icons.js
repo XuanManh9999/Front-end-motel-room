@@ -6,6 +6,7 @@ import { GiFamilyHouse } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 import { GoHeart, GoHeartFill } from "react-icons/go";
+import { GrChapterNext } from "react-icons/gr";
 const icons = {
   CiCirclePlus,
   BsChevronRight,
@@ -17,6 +18,7 @@ const icons = {
   IoIosStar,
   GoHeart,
   GoHeartFill,
-  BsFillBookmarkStarFill
+  BsFillBookmarkStarFill,
+  GrChapterNext,
 };
 export default icons;

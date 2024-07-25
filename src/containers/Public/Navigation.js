@@ -35,7 +35,7 @@ function Navigation() {
 
           {categorys &&
             categorys?.length > 0 &&
-            categorys.map((item, index) => (
+            categorys.map((item) => (
               <li className="font-medium h-full" key={categorys.code}>
                 <NavLink
                   to={formatVietnameseToString(item.value)}
