@@ -1,21 +1,28 @@
 import React from "react";
 import { useNavigate, createSearchParams } from "react-router-dom";
-function PageNumber({ number }) {
+
+const notActive =
+  "w-[46px] h-[48px] text-[#333]  hover:border-[#ddd] bg-white hover:bg-[#ddd]  rounded-md cursor-pointer flex items-center justify-center ";
+
+const active =
+  "w-[46px] h-[48px] text-white  hover:border-[#ddd] bg-[#e13427]  rounded-md cursor-pointer flex items-center justify-center ";
+function PageNumber({ text, currentPage, icon, setCurrentPage, type }) {
   const navigate = useNavigate();
   const handleOnChangePage = () => {
+    setCurrentPage(+text);
     navigate({
       pathname: "/", // truoc dau ? la pathname, sau dau ? la search
       search: createSearchParams({
-        page: number,
+        page: text,
       }).toString(),
     });
   };
   return (
     <div
-      className="px-[20px] py-[15px] text-[#333]  hover:border-[#ddd] bg-white hover:bg-[#ddd]  rounded-md cursor-pointer flex items-center justify-center "
+      className={+currentPage === +text ? active : notActive}
       onClick={handleOnChangePage}
     >
-      {number}
+      {icon || text}
     </div>
   );
 }
